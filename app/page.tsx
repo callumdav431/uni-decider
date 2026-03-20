@@ -331,7 +331,7 @@ function ScoreBar({
     </div>
   )
 }
-function AuthModal({ onClose }) {
+function AuthModal({ onClose }: { onClose: () => void }) {
   const [email, setEmail] = useState("");
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -350,7 +350,7 @@ function AuthModal({ onClose }) {
   );
 }
 
-function UniDetail({ uni, onClose }) {
+function UniDetail({ uni, onClose }: { uni: any; onClose: () => void }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="detail-modal" onClick={(e) => e.stopPropagation()}>
@@ -390,8 +390,8 @@ function UniDetail({ uni, onClose }) {
   );
 }
 
-function CompareView({ unis, onBack, onRemove }) {
-  const getWinner = (row) => {
+function CompareView({ unis, onBack, onRemove }: { unis: any[]; onBack: () => void; onRemove: (id: number) => void }) {
+  const getWinner = (row: any) => {
     if (row.best === "bool") return null;
     const vals = unis.map((u) => u[row.key]);
     const target = row.best === "low" ? Math.min(...vals) : Math.max(...vals);
@@ -400,7 +400,7 @@ function CompareView({ unis, onBack, onRemove }) {
 
   const winCounts = unis.map((_, i) => COMPARE_ROWS.reduce((c, row) => getWinner(row) === i ? c + 1 : c, 0));
 
-  const getBestCategory = (idx) => {
+  const getBestCategory = (idx: number) => {
     const u = unis[idx];
     const cats = [
       { label: "Nightlife", val: u.nightlife },
