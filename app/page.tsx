@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect, useRef } from "react";
 
 // ============================================================
@@ -99,24 +100,23 @@ const SORT_OPTIONS = [
 ];
 
 const COMPARE_ROWS = [
-  { key: "ranking", label: "UK Ranking", format: (v) => `#${v}`, best: "low" },
-  { key: "avgRent", label: "Avg Rent /month", format: (v) => `£${v}`, best: "low" },
-  { key: "graduateSalary", label: "Graduate Salary", format: (v) => `£${(v/1000).toFixed(0)}k`, best: "high" },
-  { key: "studentSatisfaction", label: "Satisfaction", format: (v) => `${v}%`, best: "high" },
-  { key: "nightlife", label: "Nightlife", format: (v) => `${v}/10`, best: "high" },
-  { key: "safety", label: "Safety", format: (v) => `${v}/10`, best: "high" },
-  { key: "gymRating", label: "Gym Quality", format: (v) => `${v}/10`, best: "high" },
-  { key: "nearbyBars", label: "Bars Nearby", format: (v) => v, best: "high" },
-  { key: "clubsAndSocs", label: "Clubs & Societies", format: (v) => v, best: "high" },
-  { key: "courseCount", label: "Total Courses", format: (v) => v, best: "high" },
-  { key: "contactHours", label: "Contact Hours /wk", format: (v) => `${v}hrs`, best: "high" },
-  { key: "libraryRating", label: "Library", format: (v) => `${v}/10`, best: "high" },
-  { key: "jobMarket", label: "Local Job Market", format: (v) => `${v}/10`, best: "high" },
-  { key: "internshipScore", label: "Internship Access", format: (v) => `${v}/10`, best: "high" },
-  { key: "diversityScore", label: "Diversity", format: (v) => `${v}/10`, best: "high" },
-  { key: "freeBus", label: "Free Bus (<22)", format: (v) => v ? "✓ Yes" : "✗ No", best: "bool" },
+  { key: "ranking", label: "UK Ranking", format: (v: number) => `#${v}`, best: "low" },
+  { key: "avgRent", label: "Avg Rent /month", format: (v: number) => `£${v}`, best: "low" },
+  { key: "graduateSalary", label: "Graduate Salary", format: (v: number) => `£${(v/1000).toFixed(0)}k`, best: "high" },
+  { key: "studentSatisfaction", label: "Satisfaction", format: (v: number) => `${v}%`, best: "high" },
+  { key: "nightlife", label: "Nightlife", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "safety", label: "Safety", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "gymRating", label: "Gym Quality", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "nearbyBars", label: "Bars Nearby", format: (v: number) => v, best: "high" },
+  { key: "clubsAndSocs", label: "Clubs & Societies", format: (v: number) => v, best: "high" },
+  { key: "courseCount", label: "Total Courses", format: (v: number) => v, best: "high" },
+  { key: "contactHours", label: "Contact Hours /wk", format: (v: number) => `${v}hrs`, best: "high" },
+  { key: "libraryRating", label: "Library", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "jobMarket", label: "Local Job Market", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "internshipScore", label: "Internship Access", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "diversityScore", label: "Diversity", format: (v: number) => `${v}/10`, best: "high" },
+  { key: "freeBus", label: "Free Bus (<22)", format: (v: boolean) => v ? "✓ Yes" : "✗ No", best: "bool" },
 ];
-
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
